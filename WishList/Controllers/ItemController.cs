@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using WishList.Data;
@@ -14,7 +15,8 @@ namespace WishList.Controllers
         }
 
         public IActionResult Index(){
-            return View("Index", _context.Items);
+            List<Item> items = _context.Items.ToList();
+            return View("Index",items );
         }
 
         [HttpGet]
